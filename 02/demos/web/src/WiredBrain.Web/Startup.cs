@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WiredBrain.Web.Services;
+using Prometheus;
 
 namespace WiredBrain.Web
 {
@@ -35,7 +36,10 @@ namespace WiredBrain.Web
             }
 
             app.UseStaticFiles();
-            app.UseRouting();   
+            app.UseRouting();
+
+            app.UseMetricServer();
+            app.UseHttpMetrics();
 
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
