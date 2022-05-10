@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "5gkjlxvQLnRO1B90DQJCuLLLHyZ72M6cQuIkm79tY2KIUbtB3F9is0A7yYMLfpVA6Km2OLpKvwFf82S5s2McRw==",
+  "success": true,
+  "projectFilePath": "D:\\scm\\psod\\psod-prom-apps\\psod-prom-apps-source\\working\\web\\src\\WiredBrain.Web\\WiredBrain.Web.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\elton\\.nuget\\packages\\prometheus-net\\3.6.0\\prometheus-net.3.6.0.nupkg.sha512",
+    "C:\\Users\\elton\\.nuget\\packages\\prometheus-net.aspnetcore\\3.6.0\\prometheus-net.aspnetcore.3.6.0.nupkg.sha512",
+    "C:\\Users\\elton\\.nuget\\packages\\restsharp\\106.11.4\\restsharp.106.11.4.nupkg.sha512",
+    "C:\\Users\\elton\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512",
+    "C:\\Users\\elton\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.2\\microsoft.netcore.app.host.win-x64.3.1.2.nupkg.sha512"
+  ],
+  "logs": []
+}

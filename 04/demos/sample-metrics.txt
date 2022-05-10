@@ -1,0 +1,5 @@
+# TYPE test_counter counter
+test_counter 20.09
+# TYPE test_gauge gauge
+# HELP test_gauge Sample gauge with labels
+test_gauge{key="value"} 6

@@ -1,0 +1,12 @@
+version: '3.7'
+
+services:
+
+  prometheus:
+    image: psodpromapps/prometheus:m2
+    build:
+      context: prometheus
+    ports:
+      - "9090:9090"
+    networks:
+      - wb-net

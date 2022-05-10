@@ -1,0 +1,93 @@
+version: '3.7'
+
+services:
+
+  products-db:
+    image: psodpromapps/products-db:m5
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=wired
+    networks:
+      - wb-net
+
+  products-api:
+    image: psodpromapps/products-api:m5
+    ports:
+      - "8081:80"
+    networks:
+      - wb-net
+    deploy:
+      replicas: 3
+      labels:
+        prometheus-scrape: 'true'
+        prometheus-path: '/actuator/prometheus'
+        prometheus-port: '80'
+
+  stock-api:
+    image: psodpromapps/stock-api:m5
+    ports:
+      - "8082:8080"
+    networks:
+      - wb-net
+    deploy:
+      replicas: 2
+      labels:
+        prometheus-scrape: 'true'
+        prometheus-path: '/metrics'
+        prometheus-port: '8080'
+  
+  web:
+    image: psodpromapps/web:m5
+    ports:
+      - "8080:80"
+    networks:
+      - wb-net
+    deploy:
+      replicas: 2
+      labels:
+        prometheus-scrape: 'true'
+        prometheus-path: '/metrics'
+        prometheus-port: '80'
+  
+  pushgateway:
+    image: prom/pushgateway:v1.2.0
+    ports:
+      - "9091:9091"
+    networks:
+      - wb-net
+
+  prometheus:
+    image: psodpromapps/prometheus:m5
+    ports:
+      - "9090:9090"
+    command:
+      - "--config.file=/config/prometheus.yml"
+    configs:
+      - source: prometheus-config
+        target: /config/prometheus.yml
+    user: root
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    deploy:
+      placement:
+        constraints:
+          - node.role == manager
+    networks:
+      - wb-net
+
+  grafana:
+    image: grafana/grafana:7.0.3
+    ports:
+      - "3000:3000"
+    networks:
+      - wb-net
+
+configs:
+  prometheus-config:
+    external: true
+
+networks:
+  wb-net:
+    external: true
+    name: wiredbrain

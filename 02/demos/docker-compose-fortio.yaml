@@ -1,0 +1,9 @@
+version: '3.7'
+
+services:
+
+  fortio:
+    image: fortio/fortio:1.6.8
+    command: load -c 32 -qps 25 -t 30s http://web
+    networks:
+      - wb-net

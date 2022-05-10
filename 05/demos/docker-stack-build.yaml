@@ -1,0 +1,27 @@
+version: '3.7'
+
+services:
+
+  products-db:
+    build:
+      context: db
+
+  products-api:
+    build:
+      context: products-api
+
+  stock-api:
+    build:
+      context: stock-api
+  
+  web:
+    build:
+      context: web
+
+  prometheus:
+    build:
+      context: prometheus
+
+  batch:
+    build:
+      context: batch

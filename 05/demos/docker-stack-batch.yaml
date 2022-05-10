@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+
+  batch:
+    image: psodpromapps/batch:m5
+    build:
+      context: batch
+    networks:
+      - wb-net
+    deploy:
+      restart_policy:
+        condition: none
+
+networks:
+  wb-net:
+    external: true
+    name: wiredbrain

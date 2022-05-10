@@ -1,0 +1,10 @@
+version: '3.7'
+
+services:
+
+  batch:
+    image: psod-prom-apps/batch:m4
+    build:
+      context: batch
+    networks:
+      - wb-net
